@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>꽥꽥 스택</title>
+  <link rel="stylesheet" href="game.css" />
+</head>
+<body>
+  <header class="top">
+    <a class="back" href="index.html">← Lina Lab</a>
+    <h1>🦆 꽥꽥 스택 <small>Quack Stack</small></h1>
+  </header>
+
+  <main class="game">
+    <div class="board-wrap">
+      <canvas id="board" width="300" height="600" aria-label="게임판"></canvas>
+      <div id="overlay" class="overlay">
+        <p id="overlay-title">꽥꽥 스택</p>
+        <p id="overlay-sub">연못에 떨어지는 돌을 쌓아 한 줄을 채우면 꽥! 하고 사라져요.</p>
+        <button id="start" class="btn">시작하기</button>
+      </div>
+    </div>
+
+    <aside class="side">
+      <div class="panel">
+        <h2>다음 돌</h2>
+        <canvas id="next" width="96" height="96"></canvas>
+      </div>
+      <div class="panel stats">
+        <div><span>점수</span><b id="score">0</b></div>
+        <div><span>줄</span><b id="lines">0</b></div>
+        <div><span>레벨</span><b id="level">1</b></div>
+        <div><span>최고</span><b id="best">0</b></div>
+      </div>
+      <div class="panel help">
+        <h2>조작</h2>
+        <p>← → 이동 · ↑ 회전<br />↓ 천천히 · 스페이스 바로 내리기<br />P 일시정지</p>
+        <p class="touch-help">화면에서 좌우로 밀면 이동, 톡 누르면 회전, 아래로 쓸면 바로 내리기</p>
+      </div>
+    </aside>
+  </main>
+
+  <div class="pad" aria-label="터치 조작">
+    <button data-act="left" aria-label="왼쪽">◀</button>
+    <button data-act="rotate" aria-label="회전">⟳</button>
+    <button data-act="right" aria-label="오른쪽">▶</button>
+    <button data-act="down" aria-label="천천히 내리기">▼</button>
+    <button data-act="drop" aria-label="바로 내리기">⤓</button>
+    <button data-act="pause" aria-label="일시정지">Ⅱ</button>
+  </div>
+
+  <script src="game.js"></script>
+</body>
+</html>
