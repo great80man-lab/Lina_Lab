@@ -13,10 +13,19 @@
   let facingRight = true;
   let t = 0;
 
-  window.addEventListener('mousemove', (e) => {
-    mouseX = e.clientX;
-    mouseY = e.clientY;
-  });
+  const follow = (px, py) => { mouseX = px; mouseY = py; };
+
+  // 마우스·펜·터치 모두 따라다님
+  window.addEventListener('pointermove', (e) => follow(e.clientX, e.clientY), { passive: true });
+  window.addEventListener('pointerdown', (e) => follow(e.clientX, e.clientY), { passive: true });
+
+  // 스크롤 중에는 pointermove가 끊기므로 터치 이벤트로도 받음
+  const onTouch = (e) => {
+    const t = e.touches[0];
+    if (t) follow(t.clientX, t.clientY);
+  };
+  window.addEventListener('touchstart', onTouch, { passive: true });
+  window.addEventListener('touchmove', onTouch, { passive: true });
 
   function frame() {
     t += 0.05;
