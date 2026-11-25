@@ -1,4 +1,4 @@
-// 꽥꽥 스택 (Quack Stack) — 연못에 돌을 쌓는 블록 퍼즐
+// 꽥꽥이가 만든 꽥꽥스택 (Quack Stack) — 연못에 돌을 쌓는 블록 퍼즐
 (() => {
   const COLS = 10, ROWS = 20;
 

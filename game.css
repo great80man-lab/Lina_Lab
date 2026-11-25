@@ -79,6 +79,7 @@ body {
   .game { flex-direction: column; align-items: center; gap: 10px; }
   .top { padding: 8px 16px; }
   .top h1 { font-size: 1.1rem; }
+  .top small { display: none; }
   .game { padding-top: 0; }
   .side { width: 100%; max-width: 360px; flex-direction: row; align-items: stretch; }
   .side .panel { padding: 8px 10px; }
