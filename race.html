@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>꽥꽥 냥냥 그랑프리</title>
+  <link rel="stylesheet" href="race.css" />
+</head>
+<body>
+  <header class="top">
+    <a class="back" href="index.html">← Lina Lab</a>
+    <h1>🏁 꽥꽥 냥냥 그랑프리</h1>
+    <span class="money">💰 <b id="money">0</b></span>
+  </header>
+
+  <!-- 처음 화면: 캐릭터 고르기 -->
+  <section id="title" class="screen active">
+    <p class="lead">함께 달릴 친구를 골라요!</p>
+    <div class="chars">
+      <button class="char" data-char="duck">
+        <canvas width="200" height="200"></canvas>
+        <b>꽥꽥이</b><span>왼쪽 차선</span>
+      </button>
+      <button class="char" data-char="cat">
+        <canvas width="200" height="200"></canvas>
+        <b>냥냥이</b><span>오른쪽 차선</span>
+      </button>
+    </div>
+    <p class="hint">고르지 않은 친구는 CPU가 운전해요.</p>
+    <div class="row">
+      <button id="go" class="btn">출발!</button>
+      <button id="to-shop" class="btn alt">상점</button>
+    </div>
+    <div class="howto">
+      <b>게임 방법</b>
+      <p>점프 버튼(또는 스페이스 키, 화면 터치)으로 장애물을 뛰어넘고, 길 위의 돈을 모아요.<br />
+        1등 상금 💰100 · 2등 상금 💰30 · 동전 하나에 💰10</p>
+    </div>
+  </section>
+
+  <!-- 경주 -->
+  <section id="race" class="screen">
+    <canvas id="track"></canvas>
+    <button id="jump" class="jump">점프!</button>
+  </section>
+
+  <!-- 결과 -->
+  <section id="result" class="screen">
+    <div class="card">
+      <h2 id="r-title">1등!</h2>
+      <canvas id="r-face" width="200" height="200"></canvas>
+      <ul class="r-list">
+        <li><span>등수 상금</span><b id="r-prize">0</b></li>
+        <li><span>주운 동전</span><b id="r-coins">0</b></li>
+        <li class="total"><span>이번에 번 돈</span><b id="r-total">0</b></li>
+      </ul>
+      <div class="row">
+        <button id="again" class="btn">다시 달리기</button>
+        <button id="r-shop" class="btn alt">상점</button>
+      </div>
+      <button id="r-home" class="link">처음으로</button>
+    </div>
+  </section>
+
+  <!-- 상점 -->
+  <section id="shop" class="screen">
+    <div class="shop-head">
+      <canvas id="shop-preview" width="600" height="360"></canvas>
+      <p id="shop-speed"></p>
+    </div>
+    <div class="tabs">
+      <button data-tab="car" class="on">차</button>
+      <button data-tab="tire">타이어</button>
+      <button data-tab="costume">옷</button>
+    </div>
+    <ul id="shop-list" class="shop-list"></ul>
+    <button id="shop-back" class="btn">돌아가기</button>
+  </section>
+
+  <script src="race.js"></script>
+</body>
+</html>
