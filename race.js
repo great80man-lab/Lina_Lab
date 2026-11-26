@@ -247,6 +247,7 @@
     $('money').textContent = save.money;
     if (id === 'title') drawTitle();
     if (id === 'shop') renderShop();
+    if (id === 'title' || id === 'shop') RaceAudio.play('menu');
   }
 
   // ---------- 처음 화면 ----------
@@ -324,7 +325,10 @@
     }
 
     race = { player, cpu, obstacles, coins, t: -3, pops: [], over: false, endTimer: 0 };
+    race.lastCount = 4;
     show('race');
+    RaceAudio.unlock();
+    RaceAudio.play('race');
     sizeCanvas();
     cancelAnimationFrame(rafId);
     last = performance.now();
@@ -334,6 +338,7 @@
   function jump(r) {
     if (race.t < 0 || r.jumpT > 0 || r.stunT > 0 || r.finishedAt !== null) return;
     r.jumpT = JUMP_TIME;
+    if (r.isPlayer) RaceAudio.sfx('jump');
   }
 
   function updateRacer(r, dt) {
@@ -354,6 +359,7 @@
       o.hit = true;
       r.v *= 0.3;
       r.stunT = 0.6;
+      if (r.isPlayer) RaceAudio.sfx('hit');
       race.pops.push({ lane: r.lane, d: r.d, text: CHARS[r.ch].sound, life: 1, color: '#e63946' });
     }
 
@@ -375,6 +381,12 @@
     const { player, cpu } = race;
 
     race.t += dt;
+    // 출발 신호 소리 (3, 2, 1, 출발!)
+    const count = race.t < 0 ? Math.ceil(-race.t) : 0;
+    if (count !== race.lastCount) {
+      race.lastCount = count;
+      RaceAudio.sfx(count ? 'beep' : 'go');
+    }
     cpuThink(cpu);
     updateRacer(player, dt);
     updateRacer(cpu, dt);
@@ -383,6 +395,7 @@
       if (!coin.got && Math.abs(coin.d - player.d) < 24) {
         coin.got = true;
         player.coins++;
+        RaceAudio.sfx('coin');
         race.pops.push({ lane: player.lane, d: player.d, text: '+10', life: 0.7, color: '#ffb703' });
       }
     }
@@ -522,6 +535,9 @@
     const coinMoney = player.coins * COIN_VALUE;
     save.money += prize + coinMoney;
     persist();
+    RaceAudio.stop();
+    RaceAudio.sfx(rank === 1 ? 'win' : 'lose');
+    setTimeout(() => { if (!race) RaceAudio.play('menu'); }, 1600);
 
     $('r-title').textContent = rank === 1 ? '🏆 1등!' : '🥈 2등!';
     $('r-prize').textContent = `💰 ${prize}`;
@@ -606,6 +622,19 @@
       list.appendChild(li);
     }
   }
+
+  // ---------- 소리 ----------
+  const muteBtn = $('mute');
+  const paintMute = () => {
+    const m = RaceAudio.isMuted();
+    muteBtn.textContent = m ? '🔇' : '🔊';
+    muteBtn.setAttribute('aria-label', m ? '소리 켜기' : '소리 끄기');
+  };
+  muteBtn.addEventListener('click', () => { RaceAudio.toggleMute(); paintMute(); });
+  paintMute();
+  // 브라우저는 화면을 한 번 눌러야 소리를 낼 수 있어요
+  document.addEventListener('pointerdown', () => RaceAudio.unlock());
+  document.addEventListener('keydown', () => RaceAudio.unlock());
 
   show('title');
 })();
