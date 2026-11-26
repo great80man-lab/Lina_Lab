@@ -62,7 +62,8 @@
   function drawFace(c, ch, x, y, r, costume) {
     c.save();
     c.translate(x, y);
-    const fur = ch === 'duck' ? '#ffd60a' : '#f4a259';
+    const fur = ch === 'duck' ? '#ffd60a' : '#ffffff';   // 냥냥이는 하얀 고양이
+    const line = '#c3ccd6';
 
     if (ch === 'cat') {
       for (const s of [-1, 1]) {
@@ -70,7 +71,8 @@
         c.beginPath();
         c.moveTo(s * r * 0.95, -r * 0.25); c.lineTo(s * r * 0.78, -r * 1.2); c.lineTo(s * r * 0.18, -r * 0.88);
         c.closePath(); c.fill();
-        c.fillStyle = '#ffb4a2';
+        c.strokeStyle = line; c.lineWidth = r * 0.06; c.lineJoin = 'round'; c.stroke();
+        c.fillStyle = '#ffc2cc';
         c.beginPath();
         c.moveTo(s * r * 0.78, -r * 0.4); c.lineTo(s * r * 0.72, -r * 0.98); c.lineTo(s * r * 0.36, -r * 0.8);
         c.closePath(); c.fill();
@@ -81,11 +83,8 @@
     c.beginPath(); c.arc(0, 0, r, 0, Math.PI * 2); c.fill();
 
     if (ch === 'cat') {
-      // 이마 줄무늬
-      c.strokeStyle = '#d9822b'; c.lineWidth = r * 0.08; c.lineCap = 'round';
-      for (const dx of [-0.18, 0, 0.18]) {
-        c.beginPath(); c.moveTo(dx * r, -r * 0.92); c.lineTo(dx * r, -r * 0.62); c.stroke();
-      }
+      // 하얀 얼굴 테두리
+      c.strokeStyle = line; c.lineWidth = r * 0.06; c.stroke();
     } else {
       // 머리 깃털
       c.fillStyle = fur;
@@ -114,16 +113,16 @@
       c.fillStyle = '#ff7b9c';
       c.beginPath(); c.moveTo(-r * 0.09, r * 0.1); c.lineTo(r * 0.09, r * 0.1); c.lineTo(0, r * 0.2); c.closePath(); c.fill();
       // 입 (w 모양)
-      c.strokeStyle = '#7a3e12'; c.lineWidth = r * 0.05; c.lineCap = 'round';
+      c.strokeStyle = '#6b5f66'; c.lineWidth = r * 0.05; c.lineCap = 'round';
       c.beginPath(); c.arc(-r * 0.1, r * 0.24, r * 0.1, 0.1 * Math.PI, 0.9 * Math.PI); c.stroke();
       c.beginPath(); c.arc(r * 0.1, r * 0.24, r * 0.1, 0.1 * Math.PI, 0.9 * Math.PI); c.stroke();
       // 튀어나온 앞니 2개
-      c.fillStyle = '#fff'; c.strokeStyle = '#7a3e12'; c.lineWidth = r * 0.035;
+      c.fillStyle = '#fff'; c.strokeStyle = '#6b5f66'; c.lineWidth = r * 0.035;
       for (const tx of [-r * 0.12, r * 0.01]) {
         c.beginPath(); c.roundRect(tx, r * 0.33, r * 0.11, r * 0.2, r * 0.03); c.fill(); c.stroke();
       }
       // 수염
-      c.strokeStyle = 'rgba(80,40,10,.6)'; c.lineWidth = r * 0.03;
+      c.strokeStyle = 'rgba(90,90,105,.55)'; c.lineWidth = r * 0.03;
       for (const s of [-1, 1]) for (const dy of [-0.04, 0.1]) {
         c.beginPath(); c.moveTo(s * r * 0.45, r * (0.18 + dy * 0.5)); c.lineTo(s * r * 1.05, r * (0.1 + dy)); c.stroke();
       }
