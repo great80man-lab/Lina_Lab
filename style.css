@@ -100,6 +100,8 @@ footer { text-align: center; padding: 32px; color: var(--muted); }
 }
 #duck svg { display: block; transition: transform .25s ease; }
 #duck.flip svg { transform: scaleX(-1); }
+.rider { transform-box: fill-box; transform-origin: 50% 100%; animation: ride .5s ease-in-out infinite alternate; }
+@keyframes ride { from { transform: translateY(0) rotate(-2deg); } to { transform: translateY(-1.5px) rotate(2deg); } }
 
 .wing { transform-box: fill-box; transform-origin: 100% 100%; animation: flap .25s ease-in-out infinite alternate; }
 .wing-back { animation-delay: -.05s; }
@@ -111,8 +113,8 @@ footer { text-align: center; padding: 32px; color: var(--muted); }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .wing { animation: none; }
+  .wing, .rider { animation: none; }
 }
 @media (hover: none) {
-  #duck svg { width: 56px; height: 47px; }
+  #duck svg { width: 68px; height: 62px; }
 }

@@ -59,7 +59,7 @@
 
   <!-- 마우스를 따라다니는 오리 -->
   <div id="duck" aria-hidden="true">
-    <svg viewBox="0 0 120 100" width="72" height="60">
+    <svg viewBox="0 -8 120 108" width="84" height="76">
       <!-- 뒤쪽 날개 -->
       <g class="wing wing-back">
         <path d="M58 48 C50 20, 30 10, 18 14 C30 26, 38 40, 52 54 Z" fill="#e6b800" />
@@ -76,6 +76,29 @@
       <circle cx="95" cy="35" r="1" fill="#fff" />
       <!-- 볼터치 -->
       <circle cx="88" cy="45" r="3" fill="#ff9e9e" opacity=".6" />
+      <!-- 오리 등에 탄 냥냥이 (하얀 고양이, 앞니 2개) -->
+      <g class="rider">
+        <path d="M46 38 C36 36, 32 26, 38 20" fill="none" stroke="#c3ccd6" stroke-width="6" stroke-linecap="round" />
+        <path d="M46 38 C36 36, 32 26, 38 20" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" />
+        <ellipse cx="57" cy="36" rx="12" ry="10" fill="#fff" stroke="#c3ccd6" stroke-width="1.5" />
+        <ellipse cx="68" cy="42" rx="4" ry="3" fill="#fff" stroke="#c3ccd6" stroke-width="1.2" />
+        <path d="M48 10 L47 -4 L56 2 Z" fill="#fff" stroke="#c3ccd6" stroke-width="1.5" stroke-linejoin="round" />
+        <path d="M72 10 L73 -4 L64 2 Z" fill="#fff" stroke="#c3ccd6" stroke-width="1.5" stroke-linejoin="round" />
+        <path d="M49.5 6 L49 -0.5 L53.5 2.5 Z" fill="#ffc2cc" />
+        <path d="M70.5 6 L71 -0.5 L66.5 2.5 Z" fill="#ffc2cc" />
+        <circle cx="60" cy="13" r="14" fill="#fff" stroke="#c3ccd6" stroke-width="1.5" />
+        <circle cx="54.5" cy="11.5" r="2" fill="#222" />
+        <circle cx="65.5" cy="11.5" r="2" fill="#222" />
+        <circle cx="55" cy="11" r=".6" fill="#fff" />
+        <circle cx="66" cy="11" r=".6" fill="#fff" />
+        <circle cx="51" cy="16" r="2.2" fill="#ffadad" opacity=".6" />
+        <circle cx="69" cy="16" r="2.2" fill="#ffadad" opacity=".6" />
+        <path d="M58.8 15.2 L61.2 15.2 L60 16.6 Z" fill="#ff7b9c" />
+        <path d="M57.6 17.6 Q58.8 19 60 17.6 Q61.2 19 62.4 17.6" fill="none" stroke="#6b5f66" stroke-width=".8" stroke-linecap="round" />
+        <rect x="58.3" y="18.6" width="1.6" height="2.8" rx=".4" fill="#fff" stroke="#6b5f66" stroke-width=".5" />
+        <rect x="60.1" y="18.6" width="1.6" height="2.8" rx=".4" fill="#fff" stroke="#6b5f66" stroke-width=".5" />
+        <path d="M50 15 L42 14 M50 17 L42 18 M70 15 L78 14 M70 17 L78 18" stroke="#9aa3b0" stroke-width=".6" stroke-linecap="round" />
+      </g>
       <!-- 앞쪽 날개 -->
       <g class="wing wing-front">
         <path d="M60 52 C54 24, 36 12, 22 16 C34 30, 40 44, 54 58 Z" fill="#f5c400" stroke="#e0a800" stroke-width="1.5" />
