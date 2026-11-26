@@ -1,4 +1,4 @@
-// 꽥꽥 냥냥 그랑프리 — 기획: 우리 딸 / 위에서 내려다보는 2차선 레이싱
+// 냥냥이가 만든 꽥꽥이와 냥냥이의 racing car 게임 — 기획: 우리 딸 / 위에서 내려다보는 2차선 레이싱
 (() => {
   const $ = (id) => document.getElementById(id);
   const rand = (a, b) => a + Math.random() * (b - a);
